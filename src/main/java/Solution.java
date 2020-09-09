@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 /*
 Домашнее задание №2
@@ -25,15 +26,29 @@ public class Solution {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        Map<String, Integer> map = new Solution().fileToMap(fileName);
+        Solution solution = new Solution();
+        Map<String, Integer> map = solution.fileToMap(fileName);
+        solution.myPrintMap(map);
+
+        solution.mostFrequency(map);
+        Map<String, Integer> sortedMap = solution.sortAlph(map);
+        System.out.println("Отсортированные слова в алфавитном порядке:");
+        solution.myPrintMap(sortedMap);
+
+
+
+
+
+    }
+    // метод сортировки мапы по ключу в алфавитном порядке
+    public Map<String, Integer> sortAlph(Map<String, Integer> unsortMap){
+        return new TreeMap<String, Integer>(unsortMap);
+    }
+
+    public void myPrintMap (Map<String, Integer> map){
         for (Map.Entry<String, Integer> pair : map.entrySet()){
             System.out.println(pair.getKey() + " : " + pair.getValue());
         }
-
-
-        new Solution().mostFrequency(map);
-
-
     }
 
     public void mostFrequency (Map<String, Integer> map){
