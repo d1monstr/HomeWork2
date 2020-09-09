@@ -71,9 +71,7 @@ public class Solution {
                         for (Map.Entry<String, Integer> pair : map.entrySet()){
 
                             if (fileString.toLowerCase().trim().equals(pair.getKey())){
-//                                System.out.println(pair.getKey() + pair.getValue());
                                 pair.setValue(pair.getValue() + 1);
-//                                System.out.println(pair.getKey() + pair.getValue());
                                 fileString = "";
                                 break;
                             }
@@ -93,8 +91,24 @@ public class Solution {
                     fileString += (char) data;
                 }
                 data = bufferedReader.read();
-
             }
+
+            if (!fileString.toLowerCase().trim().equals("")){
+                if (map.containsKey(fileString.toLowerCase().trim())){
+
+                    for (Map.Entry<String, Integer> pair : map.entrySet()){
+
+                        if (fileString.toLowerCase().trim().equals(pair.getKey())){
+                            pair.setValue(pair.getValue() + 1);
+                            break;
+                        }
+                    }
+                }
+                else {
+                    map.put(fileString.toLowerCase().trim(), 1);
+                }
+            }
+
         } catch (FileNotFoundException e) {
             System.out.println("Файл не найден!");
             e.printStackTrace();
