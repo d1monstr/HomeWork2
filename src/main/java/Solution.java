@@ -26,12 +26,30 @@ public class Solution {
 //            e.printStackTrace();
 //        }
         Map<String, Integer> map = new Solution().fileToMap(fileName);
-        System.out.println(map);
         for (Map.Entry<String, Integer> pair : map.entrySet()){
-            System.out.println(pair.getKey() + "   " + pair.getValue());
+            System.out.println(pair.getKey() + " : " + pair.getValue());
         }
 
 
+        new Solution().mostFrequency(map);
+
+
+    }
+
+    public void mostFrequency (Map<String, Integer> map){
+        int maxValue = 0;
+        for (Map.Entry<String, Integer> pair : map.entrySet()){
+            if (pair.getValue() > maxValue){
+                maxValue = pair.getValue();
+            }
+        }
+
+        System.out.println("Наиболее часто встречающиеся слова:");
+        for (Map.Entry<String, Integer> pair : map.entrySet()){
+            if (pair.getValue() == maxValue){
+                System.out.println(pair.getKey() + " : " + pair.getValue());
+            }
+        }
     }
 
     public Map<String, Integer> fileToMap(String fileName){
