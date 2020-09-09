@@ -19,18 +19,21 @@ public class Solution {
 
     public static void main(String[] args){
 
-        String fileName = "D:\\Users\\Dmitry\\Desktop\\java№2.txt";
-//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-//        try {
-//            String fileName = bufferedReader.readLine();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+//        String fileName = ".\\java№2.txt";
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        String fileName = null;
+        try {
+            fileName = bufferedReader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         Solution solution = new Solution();
         Map<String, Integer> map = solution.fileToMap(fileName);
         solution.myPrintMap(map);
 
         solution.mostFrequency(map);
+
         Map<String, Integer> sortedMap = solution.sortAlph(map);
         System.out.println("Отсортированные слова в алфавитном порядке:");
         solution.myPrintMap(sortedMap);
